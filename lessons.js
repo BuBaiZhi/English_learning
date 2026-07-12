@@ -120,5 +120,142 @@ const LESSONS = [
           ipa: "sərf ðə nɛt",
       }
     ]
-  }
+  },
+
+  {
+    title: 'An Embarrassing Situation',
+    audio: 'an_embarrassing_situation.aac',
+
+    language_takeaway: [
+      {
+        expression: 'in a bit of a hurry',
+          ipa: 'ɪn ə bɪt ʌv ə ˈhʌri',
+        explanation: 'Moving quickly, having no time.',
+        example_1: 'Can you drive faster? I’m in a bit of a hurry.',
+        example_2: 'I’m in a bit of a hurry, so I’ll check these files later.',
+      },
+      {
+        expression: 'contact details',
+          ipa: 'ˈkɒntækt ˈdiːteɪlz',
+        explanation: 'Information required to contact someone, such as telephone number or email address.',
+      },
+      {
+        expression: 'slipped my mind',
+          ipa: 'slɪpt maɪ maɪnd',
+        explanation: 'I forgot something accidentally.',
+        example_1: 'I’m sorry I forgot to respond to your email, it just slipped my mind.',
+        example_2: '-Do you know what day is today?\n-Oh!It is your birthday!It completely slipped my mind.',
+      },
+    ],
+
+    putting_it_together: [
+      {
+        expression: 'around here',
+          ipa: 'əˈraʊnd hɪər',
+        example_1: 'Is there a bank around here?',
+      },
+      {
+        expression: 'around the corner',
+          ipa: 'əˈraʊnd ðə ˈkɔːrnər',
+        example_1: 'There’s a great restaurant right around the corner.',
+      },
+      {
+        expression: 'around there',
+          ipa: 'əˈraʊnd ðɛər',
+        example_1: 'Los Angeles is a great city. I used to live around there.',
+      },
+      {
+        expression: 'terrible with',
+          ipa: 'ˈtɛrəbəl wɪð',
+        example_1: 'I’m terrible with numbers.',
+        example_2: 'I’m terrible with directions.',
+        example_3: 'I’m terrible with faces.',
+      },
+    ],
+
+    fluency_builder: [
+      {
+        original: 'How are you?',
+        native: 'How’s it going?',
+          ipa_native: 'haʊz ɪt ˈɡoʊɪŋ',
+        explanation: 'A more casual and natural way to greet someone.',
+      },
+    ],
+
+    original_text: [
+      '——Nick, how’s it going?',
+      '——Oh, hey. ',
+      '——What are you doing in this neighborhood?Do you live around here?',
+      '——Actually, my office is right around the corner.',
+      '——It was great to meet you last week at the conference.I really enjoyed our conversation about foreign investment.',
+      '——Yeah, yeah, it was really interesting.You know, I’m in a bit of a hurry, but here’s my card.We should definitely meet up again and continue our discussion.',
+      '——Sure, you still have my contact details, right?',
+      '——You know what? This is really embarrassing, but your name has just slipped my mind. Can you remind me?',
+      '——Sure. My name is Anna Ferris.',
+      '——Don’t worry about it. It happens to me all the time. I’m terrible with names, too.',
+    ],
+
+    audio_review: [
+      {
+        meaning: 'How are you?',
+        expression: 'How’s it going?',
+          ipa: 'haʊz ɪt ˈɡoʊɪŋ',
+      },
+      {
+        meaning: 'Close to here',
+        expression: 'Around here',
+          ipa: 'əˈraʊnd hɪər',
+      },
+      {
+        meaning: 'On the next street',
+        expression: 'Around the corner',
+          ipa: 'əˈraʊnd ðə ˈkɔːrnər',
+      },
+      {
+        meaning: 'Moving quickly, having no time',
+        expression: 'In a bit of a hurry',
+          ipa: 'ɪn ə bɪt ʌv ə ˈhʌri',
+      },
+      {
+        meaning: 'Information required to contact someone',
+        expression: 'Contact details',
+          ipa: 'ˈkɒntækt ˈdiːteɪlz',
+      },
+      {
+        meaning: 'Been forgotten',
+        expression: 'Slip my mind',
+          ipa: 'slɪp maɪ maɪnd',
+      },
+      {
+        meaning: 'Bad at',
+        expression: 'Terrible with',
+          ipa: 'ˈtɛrəbəl wɪð',
+      },
+      {
+        meaning: 'Close to there',
+        expression: 'Around there',
+          ipa: 'əˈraʊnd ðɛər',
+      },
+      {
+        meaning: 'To know and remember someone or something you have seen before',
+        expression: 'To recognize',
+          ipa: 'tə ˈrɛkəɡnaɪz',
+      },
+      {
+        meaning: 'Someone you know, but who is not a close friend',
+        expression: 'Acquaintance',
+          ipa: 'əˈkweɪntəns',
+      },
+      {
+        meaning: 'Move quickly, not have much time',
+        expression: 'In a rush',
+          ipa: 'ɪn ə rʌʃ',
+      },
+      {
+        meaning: 'Forgetting things easily',
+        expression: 'Forgetful',
+          ipa: 'fərˈɡɛtfəl',
+      },
+    ]
+  },
 ];

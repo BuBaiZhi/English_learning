@@ -43,7 +43,7 @@ document.addEventListener('mouseup', function(e) {
     var rect = range.getBoundingClientRect();
     lookupBtn = document.createElement('button');
     lookupBtn.className = 'lookup-btn';
-    lookupBtn.textContent = '+ \u67e5\u8bcd';  // + 查词
+    lookupBtn.textContent = '+ \u67e5\u8bcd';  // + 鏌ヨ瘝
     lookupBtn.style.position = 'fixed';
     lookupBtn.style.top = (rect.top - 38) + 'px';
     lookupBtn.style.left = (rect.left + rect.width / 2) + 'px';
@@ -115,7 +115,10 @@ function renderDictCard(card,word,data){
     h+='<div class="lookup-notfound">Word not found.</div>';
   }
   h+='</div><div class="lookup-save-area">';
-  h+='<input id="lookup-note" class="lookup-input" placeholder="Your note...">';
+  h+='<label class="lookup-label">释义 (required)</label>';
+  h+='<input id="lookup-note" class="lookup-input" placeholder="Enter the meaning...">';
+  h+='<label class="lookup-label">例句 (optional)</label>';
+  h+='<input id="lookup-example" class="lookup-input" placeholder="Enter an example sentence...">';
   h+='<button class="lookup-save-btn">Save</button></div>';
   card.innerHTML=h;
   card.querySelector(".lookup-save-btn").onclick=function(){saveWord(word);};
@@ -123,9 +126,12 @@ function renderDictCard(card,word,data){
 function saveWord(word){
   var note=document.getElementById("lookup-note");
   var nt=note?note.value.trim():"";
+  var ex=document.getElementById("lookup-example");
+  var exText=ex?ex.value.trim():"";
+  if(!nt){alert("Please enter a meaning.");note.focus();return;}
   var nb=JSON.parse(localStorage.getItem("wordNotebook")||"[]");
   if(nb.some(function(w){return w.word===word;})){closeLookup();return;}
-  nb.push({word:word,note:nt,added:new Date().toISOString().slice(0,10)});
+  nb.push({word:word,note:nt,example:exText,added:new Date().toISOString().slice(0,10)});
   localStorage.setItem("wordNotebook",JSON.stringify(nb));
   closeLookup();
 }
@@ -153,10 +159,21 @@ function showNB(){
   h+='<div style="font-size:17px;font-weight:600;margin-bottom:12px">Word Notebook ('+nb.length+')</div>';
   if(!nb.length){h+='<div style="text-align:center;padding:20px;color:#8E8E8E">No words saved.</div>';}else{
     for(var i=nb.length-1;i>=0;i--){var w=nb[i];
-      h+='<div style="padding:8px 0;border-bottom:1px solid #EDE8E2"><div style="font-weight:600;font-size:15px">'+esc(w.word)+'</div>';
-      if(w.note)h+='<div style="font-size:13px;color:#6B7A8F;margin-top:2px">'+esc(w.note)+'</div>';
-      h+='<div style="font-size:11px;color:#B8B0A3;margin-top:2px">'+esc(w.added)+'</div></div>';}
+      h+='<div class="nb-word-row">';
+      h+='<div class="nb-word-info"><div class="nb-word-title">'+esc(w.word)+'</div>';
+      if(w.note)h+='<div class="nb-word-meaning">'+esc(w.note)+'</div>';
+      if(w.example)h+='<div class="nb-word-example">'+esc(w.example)+'</div>';
+      h+='<div class="nb-word-date">'+esc(w.added)+'</div></div>';
+      h+='<button class="nb-del-btn" onclick="deleteWord(\''+esc(w.word).replace(/'/g,"\\'")+'\')">\u2716</button>';
+      h+='</div>';}
   }
   h+='</div>';o.innerHTML=h;document.body.appendChild(o);
+}
+function deleteWord(word){
+  if(!confirm("Delete \""+word+"\" from notebook?"))return;
+  var nb=JSON.parse(localStorage.getItem("wordNotebook")||"[]");
+  nb=nb.filter(function(w){return w.word!==word;});
+  localStorage.setItem("wordNotebook",JSON.stringify(nb));
+  showNB();
 }
 setTimeout(initNB,500);

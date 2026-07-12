@@ -17,7 +17,7 @@ const LESSONS = [
       {
         word: "Froze",
           ipa: "froʊz",
-        meaning: "the computer is froze means your computer stops working.",
+        meaning: "the computer froze means your computer stopped working.",
       }
     ],
 

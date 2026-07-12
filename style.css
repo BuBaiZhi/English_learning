@@ -122,5 +122,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 .nb-btn{position:fixed;bottom:20px;right:20px;width:48px;height:48px;border-radius:50%;background:#8B9DC3;color:#fff;border:none;font-size:20px;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.2);z-index:999}
 .nb-btn:hover{background:#7B8DB3}
+.nb-word-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #EDE8E2}
+.nb-word-info{flex:1;min-width:0}
+.nb-word-title{font-weight:600;font-size:15px;color:#4A4A4A}
+.nb-word-meaning{font-size:13px;color:#6B7A8F;margin-top:2px}
+.nb-word-example{font-size:12px;color:#8B9DC3;font-style:italic;margin-top:1px}
+.nb-word-date{font-size:11px;color:#B8B0A3;margin-top:2px}
+.nb-del-btn{background:none;border:none;color:#C9A9A6;font-size:14px;cursor:pointer;padding:4px 8px;border-radius:6px;margin-left:8px;flex-shrink:0}
+.nb-del-btn:hover{background:#F5EBEB;color:#B88888}
+.lookup-label{font-size:12px;font-weight:600;color:#6B7A8F;display:block;margin-bottom:2px;margin-top:6px}
+.lookup-label:first-of-type{margin-top:0}
+
 
 .ot-line{padding:10px 14px;margin-bottom:6px;font-size:14px;color:#4A4A4A;line-height:1.6;border-left:3px solid #8B9DC3;padding-left:14px;background:#F8F9FB;border-radius:0 8px 8px 0}

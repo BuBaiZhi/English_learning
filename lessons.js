@@ -60,6 +60,18 @@ const LESSONS = [
       }
     ],
 
+    // ---- Original Text ----
+    original_text: [
+      "——Oh great, the stupid computer froze again. That's the third time today.",
+      "——Hey Samuel, can you come take a look at my PC, it's acting up again. Looks have a virus or something.",
+      "——Just give me a second, I'll be right up.",
+      "——I ran a virus scan on your computer and it turns out that you have a lot of infected files,",
+      "——but I'm quite careful when I'm browsing the internet. I have no idea how I could have picked up a virus.",
+      "——Well, you have to make sure that your antivirus software is updated regularly.Yours wasn't up to date, that's probably what was causing your problems.",
+      "——Okay, anything else?",
+      "——Yeah, try not to kick or hit the computer.",
+      "——Um, yeah, sorry about that.",
+    ],
     // ---- Audio Review ----
     audio_review: [
       {

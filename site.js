@@ -1,128 +1,16 @@
-// ====== LESSON DATA ======
-// 直接在这里修改内容，每个部分分开，简单明了
-
-const LESSONS = [
-  {
-    // ---- 基本信息 ----
-    title: "Computer Problem",
-    audio: "dialogue.aac",
-
-    // ---- 关键词汇 ----
-    vocabulary: [
-      {
-        word: "Virus",
-          ipa: "ˈvaɪrəs",
-        meaning: "A program designed to harm or damage your computer.",
-      },
-      {
-        word: "Froze",
-          ipa: "froʊz",
-        meaning: "the computer is froze means your computer stops working.",
-      }
-    ],
-
-    // ---- Language Takeaway ----
-    language_takeaway: [
-      {
-        expression: "infected file",
-          ipa: "ˌɪnˈfɛktɪd faɪl",
-        explanation: "An infected file is a file in your computer that has a virus in it.",
-      },
-      {
-        expression: "not up to date",
-          ipa: "nɑt əp tɪ deɪt",
-        explanation: "It means it doesn't have all the most recent information.",
-        example_1: "I need to buy a new computer because mine isn't up to date.",
-        example_2: "This is the most up-to-date map."
-      }
-    ],
-    putting_it_together: [
-      {
-        expression: " I'll be right up.",
-          ipa: "aɪl bi raɪt əp.",
-        example_1: "-Can you help me with my computer?\n -I'll be right there.",
-        example_2: "-Come downstairs.Dinner is ready.\n -I'll be right down.",
-      },
-      {
-        expression: "It turns out that...",
-          ipa: "ɪt tərnz aʊt ðət...",
-        example_1: "Frank didn't come to work today.And it turns out that he was sick."
-      }
-    ],
-    // ---- Fluency Builder ----
-    fluency_builder: [
-      {
-        original: "his computer was acting strangely.",
-          ipa: "hɪz kəmˈpjutər wɑz ˈæktɪŋ ˈstreɪnʤli.",
-        native: "It's acting up.",
-          ipa_native: "ɪts ˈæktɪŋ əp.",
-        explanation: "The computer isn't working properly."
-      }
-    ],
-
-    // ---- Audio Review ----
-    audio_review: [
-      {
-        meaning: "to stop working properly",
-        expression: "freeze",
-          ipa: "friz",
-      },
-      {
-        meaning: "see,revise",
-        expression: "take a look",
-          ipa: "teɪk ə lʊk",
-      },
-      {
-        meaning: "not working properly",
-        expression: "act up",
-          ipa: "ækt əp",
-      },
-      {
-        meaning: "go upstairs soon",
-        expression: "be right up",
-          ipa: "bi raɪt əp",
-      },
-      {
-        meaning: "look, search",
-        expression: "browse",
-          ipa: "braʊz",
-      },
-      {
-        meaning: "having all the most recently information",
-        expression: "up to date",
-          ipa: "əp tɪ deɪt",
-      },
-      {
-        meaning: "computer screen",
-        expression: "monitor",
-          ipa: "ˈmɑnətər",
-      },
-      {
-        meaning: "damaged or broken computer file that can't be open.",
-        expression: "corrupt file",
-          ipa: "kərəpt faɪl",
-      },
-      {
-        meaning: "look for tha information on the internet",
-        expression: "surf the net",
-          ipa: "sərf ðə nɛt",
-      }
-    ]
-  }
-];
-
 const STEPS=[
   {id:"vocabulary",title:"Key Vocabulary"},
   {id:"language_takeaway",title:"Language Takeaway"},
   {id:"putting_it_together",title:"Putting It Together"},
   {id:"fluency_builder",title:"Fluency Builder"},
-  {id:"audio_review",title:"Audio Review"}
+  {id:"audio_review",title:"Audio Review"},
+{id:"original",title:"Original Text"}
 ];
 let curLesson,curStep=0,audio,curUtterance=null;
 function showHome(){const g=document.getElementById("lesson-grid");g.innerHTML="";for(const ls of LESSONS){const c=document.createElement("div");c.className="lesson-card";const vc=(ls.vocabulary||[]).length,lc=(ls.language_takeaway||[]).length;c.innerHTML='<div class="lesson-card-content"><div class="lesson-card-title">'+ls.title+'</div><div class="lesson-card-subtitle">'+vc+' vocab '+lc+' exprs</div></div><div class="lesson-card-arrow">\u2192</div>';c.onclick=()=>openLesson(ls);g.appendChild(c);}document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById("page-home").classList.add("active");}
 function openLesson(ls){curLesson=ls;curStep=0;document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById("page-lesson").classList.add("active");document.getElementById("lesson-title").textContent=ls.title;setupAudio(ls);renderStep(0);}
 function setupAudio(ls){audio=document.getElementById("audio-player");audio.src=ls.audio;audio.preload="auto";const pb=document.getElementById("play-btn"),pr=document.getElementById("progress-bar"),cu=document.getElementById("current-time"),to=document.getElementById("total-time");pb.onclick=()=>{if(audio.paused){audio.play().catch(()=>{});pb.innerHTML="\u25b6\u25b6";}else{audio.pause();pb.innerHTML="\u25b6";}};audio.onloadedmetadata=()=>{to.textContent=fmt(audio.duration);pr.max=Math.floor(audio.duration*10)/10;};audio.ontimeupdate=()=>{pr.value=audio.currentTime;cu.textContent=fmt(audio.currentTime);};audio.onended=()=>{pb.innerHTML="\u25b6";};pr.oninput=()=>{audio.currentTime=parseFloat(pr.value);};document.querySelectorAll(".spd").forEach(b=>{b.onclick=()=>{document.querySelectorAll(".spd").forEach(x=>x.classList.remove("act"));b.classList.add("act");audio.playbackRate=parseFloat(b.dataset.s);};});}
-function renderStep(idx){curStep=idx;const step=STEPS[idx];document.getElementById("cur-step").textContent=idx+1;document.getElementById("step-title").textContent=step.title;document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("act",i===idx));document.getElementById("prev-step").style.visibility=idx===0?"hidden":"visible";document.getElementById("next-step").style.visibility=idx===STEPS.length-1?"hidden":"visible";const area=document.getElementById("content");switch(step.id){case"vocabulary":renderVocab(area);break;case"language_takeaway":renderLT(area);break;case"putting_it_together":renderPIT(area);break;case"fluency_builder":renderFB(area);break;case"audio_review":renderAR(area);break;}}
+function renderStep(idx){curStep=idx;const step=STEPS[idx];document.getElementById("cur-step").textContent=idx+1;document.getElementById("step-title").textContent=step.title;document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("act",i===idx));document.getElementById("prev-step").style.visibility=idx===0?"hidden":"visible";document.getElementById("next-step").style.visibility=idx===STEPS.length-1?"hidden":"visible";const area=document.getElementById("content");switch(step.id){case"vocabulary":renderVocab(area);break;case"language_takeaway":renderLT(area);break;case"putting_it_together":renderPIT(area);break;case"fluency_builder":renderFB(area);break;case"audio_review":renderAR(area);break;case"original":renderOrig(area);break;}}
 function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/\n/g,"<br>");}
 function spk(t){if(!t)return;window.speechSynthesis.cancel();curUtterance=new SpeechSynthesisUtterance(t);curUtterance.lang="en-US";curUtterance.rate=0.9;window.speechSynthesis.speak(curUtterance);}
 function refreshSpk(){document.querySelectorAll(".spk").forEach(function(b){b.onclick=null;b.removeAttribute("onclick");b.addEventListener("click",function(e){e.stopPropagation();var t=this.getAttribute("data-t")||this.textContent.replace(/[^\w\s\']/g,"").trim();spk(t);});});}
@@ -245,6 +133,17 @@ function saveWord(word){
 
 
 // Notebook
+
+function renderOrig(area){
+  var a=curLesson.original_text||[];
+  if(!a.length){area.innerHTML='<div class="empty">No original text.</div>';return;}
+  var h='';
+  for(var i=0;i<a.length;i++){
+    h+='<div class="ot-line">'+esc(a[i])+'</div>';
+  }
+  area.innerHTML=h;
+}
+
 function initNB(){var b=document.createElement("button");b.className="nb-btn";b.textContent="[NB]";b.title="Word Notebook";b.onclick=showNB;document.body.appendChild(b);}
 function showNB(){
   closeLookup();

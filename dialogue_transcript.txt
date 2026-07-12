@@ -1,0 +1,13 @@
+=== Dialogue Transcript ===
+
+1. Oh great, the stupid computer froze again. That's the third time today.
+2. Hey Samuel, can you come take a look at my PC, it's acting up again. Let's have a virus or something.
+3. Just give me a second, I'll be right up.
+4. I ran a virus scan on your computer and it turns out that you have a lot of infected files,
+5. but I'm quite careful when I'm browsing the internet. I have no idea how I could have picked up a virus.
+6. Well, you have to make sure that your antivirus software is updated regularly.
+7. Yours wasn't up to date, that's probably what was causing your problems.
+8. Okay, anything else? Yeah, try not to kick or hit the computer.
+9. Um, yeah, sorry about that.
+
+--- 9 lines ---

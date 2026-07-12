@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>English Learning Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="page-home" class="page active">
+  <div class="home-header">
+    <h1 class="home-title">English Learning Studio</h1>
+    <p class="home-subtitle">Choose a lesson to start learning</p>
+  </div>
+  <div id="lesson-grid" class="lesson-grid"></div>
+</div>
+<div id="page-lesson" class="page">
+  <div class="lesson-header">
+    <button id="back-home" class="back-btn">&larr; Back</button>
+    <h2 id="lesson-title" class="lesson-title">Lesson</h2>
+  </div>
+  <div class="player-section">
+    <audio id="audio-player" preload="auto"></audio>
+    <div class="player-controls">
+      <button id="play-btn" class="play-btn">&#9654;</button>
+      <div class="progress-wrap">
+        <input type="range" id="progress-bar" min="0" max="1000" value="0">
+        <div class="time-display"><span id="current-time">0:00</span> / <span id="total-time">0:00</span></div>
+      </div>
+    </div>
+    <div class="speed-bar">
+      <button class="spd" data-s="0.5">0.5x</button>
+      <button class="spd act" data-s="1">1x</button>
+      <button class="spd" data-s="1.25">1.25x</button>
+      <button class="spd" data-s="1.5">1.5x</button>
+    </div>
+  </div>
+  <nav class="step-nav">
+    <button class="nav-btn" id="prev-step">&#9664;</button>
+    <div class="step-info">
+      <span class="step-num">Step <span id="cur-step">1</span>/5</span>
+      <h3 id="step-title" class="step-title">Key Vocabulary</h3>
+      <div class="dots">
+        <span class="dot act" data-i="0"></span>
+        <span class="dot" data-i="1"></span>
+        <span class="dot" data-i="2"></span>
+        <span class="dot" data-i="3"></span>
+        <span class="dot" data-i="4"></span>
+      </div>
+    </div>
+    <button class="nav-btn" id="next-step">&#9654;</button>
+  </nav>
+  <main id="content" class="content-section"></main>
+</div>
+<script src="site.js?v=1"></script>
+</body>
+</html>
